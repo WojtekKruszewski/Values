@@ -97,6 +97,13 @@ describe 'values' do
     end.not_to raise_error
   end
 
+  it 'can be instantiated with arbitrary object' do
+    source = double(amount: 1, denomination: "USD")
+    one_dollar = Money.from(source)
+    one_dollar.amount.should == 1
+    one_dollar.denomination.should == 'USD'
+  end
+
   describe '#hash and equality' do
     Y = Value.new(:x, :y)
 

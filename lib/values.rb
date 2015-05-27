@@ -33,6 +33,10 @@ class Value
         new(*hash.values_at(*self::VALUE_ATTRS))
       end
 
+      def self.from(source)
+        new(*self::VALUE_ATTRS.map{|a| source.public_send(a) })
+      end
+
       def ==(other)
         eql?(other)
       end
